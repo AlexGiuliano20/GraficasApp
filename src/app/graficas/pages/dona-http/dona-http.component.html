@@ -1,1 +1,19 @@
-<p>dona-http works!</p>
+<div
+  *ngIf="doughnutChartData.datasets[0].data.length === 0; else divGrafica"
+  class="alert alert-info"
+>
+  Cargando información...
+</div>
+
+<ng-template #divGrafica>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <div style="display: block">
+        <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
+        </canvas>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</ng-template>
