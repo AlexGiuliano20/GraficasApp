@@ -18,13 +18,10 @@ export class DonaHttpComponent implements OnInit {
   constructor(private _graficasService: GraficasService) {}
 
   ngOnInit(): void {
-    this._graficasService.usuariosRedesSociales().subscribe((data) => {
-      const labels = Object.keys(data);
-      const datos = Object.values(data);
-      this.doughnutChartData = {
-        labels: Object.keys(data),
-        datasets: [{ data: Object.values(data) }],
-      };
-    });
+    this._graficasService
+      .usuariosRedesSocialesDonaData()
+      .subscribe(({ labels, datasets }) => {
+        this.doughnutChartData = { labels, datasets };
+      });
   }
 }
